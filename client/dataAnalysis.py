@@ -4,13 +4,13 @@ import streamlit as st
 from scipy import stats
 
 #loading csv file
-df = pd.read_csv("biscayne_bay_dataset_oct_2022.csv")
+df = pd.read_csv("../data/2022-nov16.csv")
 
 #seeing the column names
 print(df.columns.tolist())
 
 #computing z-score for numeric fields temperature, salinity, and odo
-numeric_cols = ['Temperature (C)', 'pH', 'ODO (mg/L)']
+numeric_cols = ['Temperature (c)', 'Salinity (ppt)', 'ODO mg/L']
 z_scores = np.abs(stats.zscore(df[numeric_cols], nan_policy='omit'))
 
 #identifying outliers with z-scores greater than 3
@@ -29,5 +29,5 @@ print(f"Remaining rows: {rows_remaining}")
 #removing outliers
 df_cleaned = df[~outlier_mask]
 
-#saving cleaned data
+#saving cleaned data file
 df_cleaned.to_csv('data_cleaned.csv', index=False)
