@@ -6,4 +6,6 @@ app = flask.Flask(__name__)
 def health():
     return flask.jsonify({"status": "OK"})
 
-@app.route ()
+@app.route ('/api/observations')
+def observations():
+    return flask.jsonify(df.to_dict('records'))
