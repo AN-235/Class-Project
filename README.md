@@ -1,4 +1,4 @@
-# Water Quality Data Dashboard
+ # Water Quality Data Dashboard
 
 This project provides an interactive dashboard for visualizing water quality data from Biscayne Bay using data collected by aquatic robots. The dashboard is built using [Streamlit](https://streamlit.io/) for the web UI and [Plotly](https://plotly.com/python/) for advanced data visualizations.
 
