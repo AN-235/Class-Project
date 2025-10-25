@@ -1,4 +1,5 @@
-#optimi Water Quality Data Pipeline
+#optimi 
+Water Quality Data Pipeline
 
 A comprehensive data pipeline for processing, storing, and visualizing water quality data collected by aquatic robots. This project implements a complete ETL (Extract, Transform, Load) pipeline with a REST API and interactive web dashboard.
 
@@ -33,10 +34,30 @@ Class-Project/
 
 ### Prerequisites
 
-- Python 3.9+
+- **Python 3.9 - 3.13** (tested on all versions)
 - pip package manager
+- Git (for cloning)
+- 4GB RAM minimum
 
-### Installation
+### Automated Setup (Recommended)
+
+#### Windows:
+```bash
+setup.bat
+```
+
+#### macOS / Linux:
+```bash
+./setup.sh
+```
+
+The setup script will automatically:
+- Create a virtual environment
+- Install all dependencies
+- Process and clean the data
+- Set up the database
+
+### Manual Installation
 
 1. **Clone the repository:**
    ```bash
@@ -44,30 +65,46 @@ Class-Project/
    cd Class-Project
    ```
 
-2. **Install dependencies:**
+2. **Create and activate virtual environment:**
    ```bash
+   # Windows
+   python -m venv .venv
+   .venv\Scripts\activate
+
+   # macOS / Linux
+   python3 -m venv .venv
+   source .venv/bin/activate
+   ```
+
+3. **Install dependencies:**
+   ```bash
+   pip install --upgrade pip
    pip install -r requirements.txt
    ```
 
-3. **Process the data:**
+4. **Process the data:**
    ```bash
    python data_cleaning.py
    ```
 
-4. **Set up the database:**
+5. **Set up the database:**
    ```bash
    python database_setup.py
    ```
 
-5. **Start the API server:**
+6. **Start the API server:**
    ```bash
    python api/flaskAPI.py
    ```
+   API will be available at: `http://localhost:5000`
 
-6. **Launch the dashboard:**
+7. **Launch the dashboard (in a new terminal):**
    ```bash
    streamlit run client/streamlit_client.py
    ```
+   Dashboard will be available at: `http://localhost:8501`
+
+**For detailed OS-specific setup instructions, see [SETUP.md](SETUP.md)**
 
 ## 📊 Features
 
@@ -244,42 +281,75 @@ curl http://localhost:5000/api/stats
 
 ### Python Packages
 - Flask 3.1.2
-- pandas 2.3.3
+- Flask-CORS 5.0.0
+- Flask-Compress 1.15
+- pandas >= 2.2.0
 - pymongo 4.9.2
 - mongomock 4.1.2
 - streamlit 1.50.0
 - plotly 6.0.0
-- numpy 1.24.3
-- scipy 1.11.4
+- numpy >= 1.26.0
+- scipy >= 1.13.0
+- setuptools >= 65.0.0
+- requests 2.32.5
+- python-dateutil >= 2.8.2
 
 ### System Requirements
-- Python 3.9+
+- **Python 3.9 - 3.13** (cross-version compatible)
 - 4GB RAM minimum
 - 1GB disk space
+- Works on Windows, macOS, and Linux
 
 ## 🚨 Troubleshooting
 
 ### Common Issues
 
-1. **API Connection Error**
-   - Ensure Flask API is running on port 5000
+1. **Package Installation Fails**
+   - **Python 3.13 users**: Ensure `setuptools` is installed (included in requirements.txt)
+   - Try: `pip install --upgrade pip setuptools`
+   - Clear cache: `pip cache purge`
+   - Install without cache: `pip install -r requirements.txt --no-cache-dir`
+
+2. **API Connection Error**
+   - Ensure Flask API is running (check terminal for port number)
+   - Default ports: 5000 or 5002
    - Check firewall settings
-   - Verify API health endpoint
+   - Test with: `curl http://localhost:5000/api/health`
 
-2. **Database Connection Error**
-   - MongoDB not running (use mongomock)
-   - Connection string incorrect
-   - Network connectivity issues
+3. **Database Connection Error**
+   - **This is normal!** The app automatically uses mongomock (in-memory database)
+   - MongoDB is optional - mongomock works perfectly for development
+   - To use real MongoDB: Install and start MongoDB service
 
-3. **Data Loading Issues**
-   - CSV files in correct format
-   - Required columns present
-   - File permissions
+4. **Virtual Environment Issues**
+   - Windows: May need to allow script execution:
+     ```powershell
+     Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
+     ```
+   - Ensure virtual environment is activated (look for `(.venv)` in prompt)
+   - Use Python 3.9-3.13 (check with `python --version`)
 
-4. **Memory Issues**
-   - Reduce batch size
-   - Use pagination
-   - Increase system RAM
+5. **Data Loading Issues**
+   - Ensure CSV files exist in `data/` directory
+   - Required files: 2021-dec16.csv, 2021-oct21.csv, 2022-nov16.csv, 2022-oct7.csv
+   - Check file permissions
+
+6. **Port Already in Use**
+   - Check what's using the port:
+     - macOS/Linux: `lsof -i :5000`
+     - Windows: `netstat -ano | findstr :5000`
+   - Flask will automatically try alternate ports (5001, 5002, etc.)
+
+7. **Streamlit Won't Open**
+   - Manually open browser to: `http://localhost:8501`
+   - Ensure API server is running first
+
+8. **Cross-Platform Issues**
+   - Windows: Use `\` for paths or `setup.bat`
+   - macOS/Linux: Use `/` for paths or `./setup.sh`
+   - See [SETUP.md](SETUP.md) for OS-specific instructions
+
+**For detailed troubleshooting, see [SETUP.md](SETUP.md)**
 
 ## 📚 Learning Outcomes
 

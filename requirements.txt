@@ -1,12 +1,22 @@
+# Core dependencies
+setuptools>=65.0.0
+
+# Web Framework
 Flask==3.1.2
 Flask-CORS==5.0.0
 Flask-Compress==1.15
 requests==2.32.5
-pandas==2.3.3
+
+# Data Processing (Python 3.9+ compatible)
+pandas>=2.2.0
+numpy>=1.26.0
+scipy>=1.13.0
+python-dateutil>=2.8.2
+
+# Database
 pymongo==4.9.2
 mongomock==4.1.2
+
+# Visualization
 streamlit==1.50.0
 plotly==6.0.0
-numpy==1.24.3
-scipy==1.11.4
-python-dateutil==2.8.2
