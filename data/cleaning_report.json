@@ -1,0 +1,21 @@
+{
+  "original_rows": 3287,
+  "rows_removed": 37,
+  "rows_remaining": 3250,
+  "removal_percentage": 1.1256464861575906,
+  "outlier_details": {
+    "temperature": {
+      "outlier_count": 12,
+      "outlier_percentage": 0.36507453605111045,
+      "mean": 28.699330841998787,
+      "std": 1.1598000504907775
+    },
+    "depth": {
+      "outlier_count": 26,
+      "outlier_percentage": 0.7909948281107393,
+      "mean": 3.1353270459385456,
+      "std": 0.8981878393934826
+    }
+  },
+  "z_threshold": 3.0
+}
