@@ -96,7 +96,7 @@ The setup script will automatically:
    ```bash
    python api/flaskAPI.py
    ```
-   API will be available at: `http://localhost:5000`
+   API will be available at: `http://localhost:5002
 
 7. **Launch the dashboard (in a new terminal):**
    ```bash
@@ -314,7 +314,7 @@ curl http://localhost:5000/api/stats
    - Ensure Flask API is running (check terminal for port number)
    - Default ports: 5000 or 5002
    - Check firewall settings
-   - Test with: `curl http://localhost:5000/api/health`
+   - Test with: `curl http://localhost:5000/api/health` or `curl http://localhost:5002/api/health` respectively
 
 3. **Database Connection Error**
    - **This is normal!** The app automatically uses mongomock (in-memory database)
