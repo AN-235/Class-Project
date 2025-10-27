@@ -384,3 +384,11 @@ For questions or issues:
 ---
 
 *Water Quality Data Pipeline - From CSV to Interactive Dashboard*
+
+## Demo and Write Up
+
+Write Up
+- [Project_ShortWriteUp.docx](../../../Downloads/Project_ShortWriteUp.docx)
+
+Demo
+- [ClassProject_Demo.mp4](../../../Downloads/ClassProject_Demo.mp4)
